@@ -1,8 +1,8 @@
-@(averageSellingPriceBySellerType: java.util.Map[java.lang.String, java.lang.Double],
+@(message: java.lang.String,averageSellingPriceBySellerType: java.util.Map[java.lang.String, java.lang.Double],
         percentageOfCarsByMake: java.util.Map[java.lang.String, java.lang.Long],
         averageTop30Percentage: java.lang.Double,
         listingByMounts: java.util.List[model.ListingByMount])
 
 @main("Data Reports") {
-    @report("Data Reports",averageSellingPriceBySellerType, percentageOfCarsByMake, averageTop30Percentage, listingByMounts)
+    @report("Data Reports",message,averageSellingPriceBySellerType, percentageOfCarsByMake, averageTop30Percentage, listingByMounts)
 }

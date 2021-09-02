@@ -1,22 +1,27 @@
-@(title: java.lang.String,averageSellingPriceBySellerType: java.util.Map[java.lang.String, java.lang.Double],
+@(title: java.lang.String,message: java.lang.String,averageSellingPriceBySellerType: java.util.Map[java.lang.String, java.lang.Double],
         percentageOfCarsByMake: java.util.Map[java.lang.String, java.lang.Long],
         averageTop30Percentage: java.lang.Double,
         listingByMounts: java.util.List[model.ListingByMount])
 
-<h1>@title</h1>
-
+<h1>Data Upload</h1>
+<hr>
 @helper.form(action = routes.ReportController.upload, Symbol("enctype") -> "multipart/form-data") {
     <p>
-        <input type="file" name="listings">
+        Listings file : <input type="file" name="listings">
     </p>
     <p>
-        <input type="file" name="contacts">
+        Contacts file : <input type="file" name="contacts">
     </p>
     <p>
         <input type="submit">
     </p>
 }
+<p class="alert">
+    @message
+</p>
 
+<h1>@title</h1>
+<hr>
 @if(averageSellingPriceBySellerType.isEmpty) {
     <h2>Average Listing Selling Price per Seller Type Data is not available</h2>
 } else {

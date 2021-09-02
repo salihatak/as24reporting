@@ -2,6 +2,11 @@
 
 AS24 Reporting is a reporting application which creates statistical report from listing and contact data.
 
+Features:
+1. Simple Web UI to display reports _[Implemented]_
+2. Upload your own file to display reports _[Implemented]_
+3. API endpoint to access aggregation functionality _[Not Implemented Yet]_
+
 ## Technology and Requirements
 
 Developed using Java Programming Language and Play Framework. 

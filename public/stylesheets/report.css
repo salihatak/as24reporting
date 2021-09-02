@@ -2,3 +2,7 @@ td{
     border-top: #222222 1px solid;
     padding: 5px;
 }
+.alert{
+    color: red;
+    font-weight: bold;
+}
