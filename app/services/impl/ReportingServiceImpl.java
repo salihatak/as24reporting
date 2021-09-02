@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.toList;
 
 public class ReportingServiceImpl implements ReportingService {
 
-    private static final int TOP_LISTINS_SIZE = 5;
+    private static final int TOP_LISTINGS_SIZE = 5;
     private static final DateFormat MONTH_FORMAT = new SimpleDateFormat("MM.yyyy");
 
     @Override
@@ -63,7 +63,7 @@ public class ReportingServiceImpl implements ReportingService {
                 .filter(listing -> Objects.nonNull(mapEntry.getValue().get(listing.getId())))
                 .map(listing -> new ListingWithContactCount(listing, mapEntry.getValue().get(listing.getId())))
                 .sorted(comparing(ListingWithContactCount::getContactCount).reversed())
-                .limit(TOP_LISTINS_SIZE)
+                .limit(TOP_LISTINGS_SIZE)
                 .collect(toList());
         return new ListingByMount(mapEntry.getKey(), top5ListingByMonth);
     }

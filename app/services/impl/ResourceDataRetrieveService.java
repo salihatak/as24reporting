@@ -6,7 +6,6 @@ import play.Environment;
 import services.DataRetrieveService;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -57,6 +56,13 @@ public class ResourceDataRetrieveService implements DataRetrieveService {
 
     private Listing mapToListing(String line) {
         String[] columns = line.split(COMMA);
-        return new Listing(Long.parseLong(columns[0]), columns[1], Double.parseDouble(columns[2]), Long.parseLong(columns[3]), columns[4]);
+        return new Listing(Long.parseLong(columns[0]), removeQuotes(columns[1]), Double.parseDouble(columns[2]), Long.parseLong(columns[3]), removeQuotes(columns[4]));
+    }
+
+    private String removeQuotes(String column) {
+        if(!column.isEmpty()){
+            return column.replaceAll("\"","");
+        }
+        return column;
     }
 }

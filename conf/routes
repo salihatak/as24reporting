@@ -1,5 +1,6 @@
 
-GET     /                    controllers.ReportController.renderReport
+GET     /                           controllers.ReportController.renderReport
 
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
+POST    /                           controllers.ReportController.upload(request: Request)

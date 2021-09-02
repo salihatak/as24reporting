@@ -5,6 +5,18 @@
 
 <h1>@title</h1>
 
+@helper.form(action = routes.ReportController.upload, Symbol("enctype") -> "multipart/form-data") {
+    <p>
+        <input type="file" name="listings">
+    </p>
+    <p>
+        <input type="file" name="contacts">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+}
+
 @if(averageSellingPriceBySellerType.isEmpty) {
     <h2>Average Listing Selling Price per Seller Type Data is not available</h2>
 } else {
