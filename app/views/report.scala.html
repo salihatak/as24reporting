@@ -1,0 +1,95 @@
+@(title: java.lang.String,averageSellingPriceBySellerType: java.util.Map[java.lang.String, java.lang.Double],
+        percentageOfCarsByMake: java.util.Map[java.lang.String, java.lang.Long],
+        averageTop30Percentage: java.lang.Double,
+        listingByMounts: java.util.List[model.ListingByMount])
+
+<h1>@title</h1>
+
+@if(averageSellingPriceBySellerType.isEmpty) {
+    <h2>Average Listing Selling Price per Seller Type Data is not available</h2>
+} else {
+    <h2>Average Listing Selling Price per Seller Type </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Seller Type</th>
+                <th>Average in Euro</th>
+            </tr>
+        </thead>
+        @for(entryItem <- averageSellingPriceBySellerType.entrySet()) {
+        <tr>
+            <td>@entryItem.getKey</td>
+            <td>@("€ %(,.0f,-".formatLocal(Locale.US, entryItem.getValue))</td>
+        </tr>
+        }
+    </table>
+}
+
+<br/>
+
+@if(percentageOfCarsByMake.isEmpty) {
+    <h2>Prices Average in Euro by Seller Type Data is not available</h2>
+} else {
+    <h2>Percentual distribution of available cars by Make </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Seller Type</th>
+                <th>Average in Euro</th>
+            </tr>
+        </thead>
+        @for( key <- percentageOfCarsByMake.keySet() ) {
+            <tr>
+                <td>@key</td>
+                <td>@("%d".formatLocal(Locale.US, percentageOfCarsByMake.get(key)))%</td>
+            </tr>
+        }
+    </table>
+}
+
+<br/>
+
+<h2>Average price of the 30% most contacted listings </h2>
+<table>
+    <thead>
+        <tr>
+            <th>Average price</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>@("€ %(,.0f,-".formatLocal(Locale.US, averageTop30Percentage))</td>
+    </tr>
+</table>
+
+<br/>
+
+@if(listingByMounts.isEmpty) {
+    <h2>The Top 5 most contacted listings per Month Data is not available</h2>
+} else {
+    <h2>The Top 5 most contacted listings per Month </h2>
+    @for( list <- listingByMounts ){
+    <p>Month: @list.getMonth</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Listing Id</th>
+                <th>Make</th>
+                <th>Selling Price</th>
+                <th>Mileage</th>
+                <th>Total Amount of contacts</th>
+            </tr>
+        </thead>
+        @for((listing, index) <- list.getListingList.zipWithIndex){
+            <tr>
+                <td>@(index + 1)</td>
+                <td>@listing.getId</td>
+                <td>@listing.getMake</td>
+                <td>@("€ %(,.0f,-".formatLocal(Locale.US, listing.getPrice))</td>
+                <td>@("%d ".formatLocal(Locale.US, listing.getMileage))KM</td>
+                <td>@listing.getContactCount</td>
+            </tr>
+        }
+    </table>
+    }
+}
