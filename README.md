@@ -1,8 +1,8 @@
-## AS24 Reporting
+# AS24 Reporting
 
 AS24 Reporting is a reporting application which creates statistical report from listing and contact data.
 
-### Technology and Requirements
+## Technology and Requirements
 
 Developed using Java Programming Language and Play Framework. 
 
@@ -19,7 +19,7 @@ To check your sbt version, enter the following in a command window:
 
 `sbt sbtVersion`
 
-### Build and run the project
+## Build and run the project
 
 To build and run the project:
 
@@ -29,7 +29,7 @@ To build and run the project:
 
 3. After the message `Server started, ...` displays, enter the following URL in a browser: <http://localhost:9000>
 
-### Test the project
+## Test the project
 
 To run tests:
 
